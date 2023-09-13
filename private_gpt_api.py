@@ -94,8 +94,8 @@ async def question(question: str):
     return {
         "answer": answer,
         "documents": {
-            "source": [document.metadata["source"] for document in docs],
-            "content": [document.page_content for document in docs],
+            {"source": document.metadata["source"], "content": document.page_content}
+            for document in docs
         },
         "time_taken": end_time - start_time,
     }
